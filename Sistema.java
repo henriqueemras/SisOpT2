@@ -103,7 +103,7 @@ public class Sistema {
 					
 					controle=false;
 				if (cont!=temp_delta){
-					try{Thread.sleep(500); // usado para que possamos ver a execução, se quiser que vá mais rápido só comentar
+					try{Thread.sleep(250); // usado para que possamos ver a execução, se quiser que vá mais rápido só comentar
 					}catch(InterruptedException ie){}
 					
 					cont ++;
@@ -886,19 +886,19 @@ public class Sistema {
 		int op = 0;
 		int tmp = 0;
 		Scanner leitura=new Scanner(System.in);
-		while(op!=-1){
+		while(op!=9){
 				
 				System.out.println("\n ******************************************");
 				System.out.println("Selecione a operacao desejada:");
 				System.out.println("	1 - Criar processo");
 				System.out.println("	2 - Dump processo");
-				System.out.println("	3 - Dum memoria");
+				System.out.println("	3 - Dump memoria");
 				System.out.println("	4 - Executar processo");
 				System.out.println("	5 - Desalocar processo");
 				System.out.println("	6 - Listar processos");
 				System.out.println("	7 - Inserir dado TRAP");
 				System.out.println("	8 - Inserir todos os Processos");
-				System.out.println("	9 - Sair");
+				System.out.println("	0 - Sair");
 				System.out.print("Operacao: ");
 				
 				op = leitura.nextInt();
@@ -967,6 +967,7 @@ public class Sistema {
 							for(int i=0;i<listaProgramas.size();i++){
 								monitor.cria(listaProgramas.get(i));
 							}
+						break;
 			}
 		}                                                                                                                                                               
 	}
@@ -1008,7 +1009,7 @@ public class Sistema {
 		  new Word(Opcode.LDI, 6, -1, 1),      // 2   	r6 é 1 para ser o decremento
 		  new Word(Opcode.LDI, 7, -1, 8),      // 3   	r7 tem posicao de stop do programa = 8
 		  new Word(Opcode.JMPIE, 7, 0, 0),     // 4   	se r0=0 pula para r7(=8)
-		 new Word(Opcode.MULT, 1, 0, -1),     // 5   	r1 = r1 * r0
+		  new Word(Opcode.MULT, 1, 0, -1),     // 5   	r1 = r1 * r0
 		  new Word(Opcode.SUB, 0, 6, -1),      // 6   	decrementa r0 1 
 		  new Word(Opcode.JMP, -1, -1, 4),     // 7   	vai p posicao 4
 		  new Word(Opcode.STD, 1, -1, 10),     // 8   	coloca valor de r1 na posição 10
